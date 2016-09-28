@@ -8,7 +8,7 @@ Computational vision and machine learning.
 	- Recognize series of numbers from images.
 2. DrStar (pending)
 	- Recognize celebrities faces from images.
-3. DrGuard (pending)
+3. DrSpot (pending)
 	- Recognize family members or office personnel from images.
 	- Recognize non-family members or non-office personnel from images.
 	- Use cases:

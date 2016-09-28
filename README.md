@@ -4,11 +4,11 @@ Computational vision and machine learning.
 ![](gloqo_logo_slogan_web.jpg)
 
 ## Services (in progress)
-1. DrNum (in progress)
+1. Detection of Numbers (in progress)
 	- Recognize series of numbers from images.
-2. DrStar (pending)
+2. Detection of Celebrities (pending)
 	- Recognize celebrities faces from images.
-3. DrSpot (pending)
+3. Dectection of Intruders or High Value Clients (pending)
 	- Recognize family members or office personnel from images.
 	- Recognize non-family members or non-office personnel from images.
 	- Use cases:

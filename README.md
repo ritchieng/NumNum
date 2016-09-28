@@ -1,7 +1,7 @@
 # Gloqo
 Computational vision and machine learning.
 
-![](gloqo_logo_slogan_web.jpg
+![](gloqo_logo_slogan_web.jpg)
 
 ## Services (in progress)
 1. DrNum (in progress)

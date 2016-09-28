@@ -4,7 +4,6 @@ Computational vision and machine learning.
 ![](gloqo_logo_slogan_web.jpg
 
 ## Services (in progress)
-<br />
 1. DrNum (in progress)
 	- Recognize series of numbers from images.
 2. DrStar (pending)

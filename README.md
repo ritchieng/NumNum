@@ -14,3 +14,6 @@ I used Python, Keras and Tensorflow to build the model.
 1. [Multi-digit recognition](https://arxiv.org/abs/1312.6082)
 2. [The Street View House Numbers (SVHN) Dataset](http://ufldl.stanford.edu/housenumbers/)
 
+
+## Licensing
+This is an open source project governed by the license in this repository.

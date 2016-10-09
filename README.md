@@ -6,9 +6,7 @@ This project explores how deep convolutional neural networks (CNNs) can be used 
 I am attempting to predict a series of numbers given an image of house numbers from the SVHN dataset. An important thing to take note is that instead of the standard identification of numbers, as with the MNIST dataset, I now need to correctly detect the numbers and the sequence of numbers. 
 
 ## Programming Language
-I used Python, Keras and Tensorflow to build the model. 
-- In Keras, the model uses the Functional API as it allows us to build custom and complex models.
-
+I used Python and Tensorflow to build the model. This implementation also uses TensorBoard extensively for visualizations.
 
 ## Academic Journals and Resources
 1. [Multi-digit recognition](https://arxiv.org/abs/1312.6082)

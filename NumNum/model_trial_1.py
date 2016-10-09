@@ -7,7 +7,6 @@ import numpy as np, h5py
 import pandas as pd
 from PIL import Image
 import tensorflow as tf
-from sklearn.cross_validation import train_test_split
 
 
 print('Loading pickled data...')

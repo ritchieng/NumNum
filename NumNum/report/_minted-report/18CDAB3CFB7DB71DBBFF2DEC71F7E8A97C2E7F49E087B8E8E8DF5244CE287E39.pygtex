@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Loading pickled data...\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{pickle\PYGZus{}file} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}SVHN.pickle\PYGZsq{}}
+
+\PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{pickle\PYGZus{}file}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{f}\PYG{p}{:}
+    \PYG{n}{save} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)}
+    \PYG{n}{X\PYGZus{}train} \PYG{o}{=} \PYG{n}{save}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}train\PYGZus{}dataset\PYGZsq{}}\PYG{p}{]}
+    \PYG{n}{y\PYGZus{}train} \PYG{o}{=} \PYG{n}{save}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}train\PYGZus{}labels\PYGZsq{}}\PYG{p}{]}
+    \PYG{n}{X\PYGZus{}val} \PYG{o}{=} \PYG{n}{save}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}valid\PYGZus{}dataset\PYGZsq{}}\PYG{p}{]}
+    \PYG{n}{y\PYGZus{}val} \PYG{o}{=} \PYG{n}{save}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}valid\PYGZus{}labels\PYGZsq{}}\PYG{p}{]}
+    \PYG{n}{X\PYGZus{}test} \PYG{o}{=} \PYG{n}{save}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}test\PYGZus{}dataset\PYGZsq{}}\PYG{p}{]}
+    \PYG{n}{y\PYGZus{}test} \PYG{o}{=} \PYG{n}{save}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}test\PYGZus{}labels\PYGZsq{}}\PYG{p}{]}
+    \PYG{k}{del} \PYG{n}{save}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Training data shape:\PYGZsq{}}\PYG{p}{,} \PYG{n}{X\PYGZus{}train}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Training label shape:\PYGZsq{}}\PYG{p}{,}\PYG{n}{y\PYGZus{}train}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Validation data shape:\PYGZsq{}}\PYG{p}{,} \PYG{n}{X\PYGZus{}val}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Validation label shape:\PYGZsq{}}\PYG{p}{,} \PYG{n}{y\PYGZus{}val}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Test data shape:\PYGZsq{}}\PYG{p}{,} \PYG{n}{X\PYGZus{}test}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+    \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Test label shape:\PYGZsq{}}\PYG{p}{,} \PYG{n}{y\PYGZus{}test}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{)}
+
+\PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Data successfully loaded!\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

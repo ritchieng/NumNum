@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{os}
+\PYG{k+kn}{import} \PYG{n+nn}{sys}
+\PYG{k+kn}{import} \PYG{n+nn}{tarfile}
+\PYG{k+kn}{import} \PYG{n+nn}{tarfile}
+\PYG{k+kn}{import} \PYG{n+nn}{tensorflow} \PYG{k+kn}{as} \PYG{n+nn}{tf}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}\PYG{o}{,} \PYG{n+nn}{h5py}
+\PYG{k+kn}{from} \PYG{n+nn}{\PYGZus{}\PYGZus{}future\PYGZus{}\PYGZus{}} \PYG{k+kn}{import} \PYG{n}{print\PYGZus{}function}
+\PYG{k+kn}{from} \PYG{n+nn}{six.moves} \PYG{k+kn}{import} \PYG{n}{cPickle} \PYG{k}{as} \PYG{n}{pickle}
+\PYG{k+kn}{from} \PYG{n+nn}{six.moves} \PYG{k+kn}{import} \PYG{n+nb}{range}
+\PYG{k+kn}{from} \PYG{n+nn}{six.moves.urllib.request} \PYG{k+kn}{import} \PYG{n}{urlretrieve}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy} \PYG{k+kn}{import} \PYG{n}{ndimage}
+\PYG{k+kn}{from} \PYG{n+nn}{PIL} \PYG{k+kn}{import} \PYG{n}{Image}
+\PYG{k+kn}{from} \PYG{n+nn}{numpy} \PYG{k+kn}{import} \PYG{n}{random}
+\end{Verbatim}

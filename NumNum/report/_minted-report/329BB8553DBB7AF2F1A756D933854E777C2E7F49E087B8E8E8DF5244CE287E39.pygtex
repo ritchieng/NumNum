@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{def} \PYG{n+nf}{init\PYGZus{}weights}\PYG{p}{(}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{name}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{Variable}\PYG{p}{(}
+            \PYG{n}{tf}\PYG{o}{.}\PYG{n}{random\PYGZus{}normal}\PYG{p}{(}\PYG{n}{shape}\PYG{o}{=}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{stddev}\PYG{o}{=}\PYG{l+m+mf}{0.01}\PYG{p}{),}
+            \PYG{n}{name}\PYG{o}{=}\PYG{n}{name}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{init\PYGZus{}biases}\PYG{p}{(}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{name}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{Variable}\PYG{p}{(}
+            \PYG{n}{tf}\PYG{o}{.}\PYG{n}{constant}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{shape}\PYG{o}{=}\PYG{n}{shape}\PYG{p}{),}
+            \PYG{n}{name}\PYG{o}{=}\PYG{n}{name}
+        \PYG{p}{)}
+\end{Verbatim}

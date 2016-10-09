@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Minibatch} \PYG{n}{accuracy}\PYG{p}{:} \PYG{l+m+mf}{96.25}\PYG{o}{\PYGZpc{}}
+\PYG{n}{Validation} \PYG{n}{accuracy}\PYG{p}{:} \PYG{l+m+mf}{90.5594651654}\PYG{o}{\PYGZpc{}}
+\PYG{n}{Test} \PYG{n}{accuracy}\PYG{p}{:} \PYG{l+m+mf}{91.6176920722}\PYG{o}{\PYGZpc{}}
+\end{Verbatim}

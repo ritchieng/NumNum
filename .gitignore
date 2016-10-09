@@ -1,3 +1,11 @@
 /.idea
 /NumNum/logs
 /NumNum/SVHN.pickle
+/NumNum/train.tar.gz
+/NumNum/test.tar.gz
+/NumNum/extra.tar.gz
+/NumNum/train
+/NumNum/test
+/NumNum/extra
+/NumNum/log_trial_1
+/NumNum/log_trial_2

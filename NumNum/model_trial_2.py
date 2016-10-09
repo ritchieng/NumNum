@@ -87,10 +87,12 @@ with graph.as_default():
     '''Variables'''
 
     # Create Variables Function
-    def init_weights(shape, name):
-        return tf.Variable(
-            tf.random_normal(shape=shape, stddev=0.01),
-            name=name)
+    def init_weights_conv(shape, name):
+        return tf.get_variable(shape=shape, name=name,
+            initializer=tf.contrib.layers.xavier_initializer_conv2d())
+    def init_weights_fc(shape, name):
+        return tf.get_variable(shape=shape, name=name,
+            initializer=tf.contrib.layers.xavier_initializer())
 
     def init_biases(shape, name):
         return tf.Variable(
@@ -132,19 +134,19 @@ with graph.as_default():
     # Convolution 1
     # Input channels: num_channels = 1
     # Output channels: depth = depth_1
-    w_c1 = init_weights([patch_size, patch_size, num_channels, depth_1], 'w_c1')
+    w_c1 = init_weights_conv([patch_size, patch_size, num_channels, depth_1], 'w_c1')
     b_c1 = init_biases([depth_1], 'b_c1')
 
     # Convolution 2
     # Input channels: num_channels = depth_1
     # Output channels: depth = depth_2
-    w_c2 = init_weights([patch_size, patch_size, depth_1, depth_2], 'w_c2')
+    w_c2 = init_weights_conv([patch_size, patch_size, depth_1, depth_2], 'w_c2')
     b_c2 = init_biases([depth_2], 'b_c2')
 
     # Convolution 3
     # Input channels: num_channels = depth_2
     # Output channels: depth = depth_3
-    w_c3 = init_weights([patch_size, patch_size, depth_2, depth_3], 'w_c3')
+    w_c3 = init_weights_conv([patch_size, patch_size, depth_2, depth_3], 'w_c3')
     b_c3 = init_biases([depth_3], 'b_c3')
 
     # Fully Connect Layer 1
@@ -153,27 +155,27 @@ with graph.as_default():
                                         padding='valid', conv_stride=1,
                                         pool_stride=2)
     print('Final image size after convolutions {}'.format(final_image_size))
-    w_fc1 = init_weights([final_image_size*final_image_size*depth_3, num_hidden], 'w_fc1')
+    w_fc1 = init_weights_fc([final_image_size*final_image_size*depth_3, num_hidden], 'w_fc1')
     b_fc1 = init_biases([num_hidden], 'b_fc1')
 
     # Softmax 1
-    w_s1 = init_weights([num_hidden, num_labels], 'w_s1')
+    w_s1 = init_weights_fc([num_hidden, num_labels], 'w_s1')
     b_s1 = init_biases([num_labels], 'b_s1')
 
     # Softmax 2
-    w_s2 = init_weights([num_hidden, num_labels], 'w_s2')
+    w_s2 = init_weights_fc([num_hidden, num_labels], 'w_s2')
     b_s2 = init_biases([num_labels], 'b_s2')
 
     # Softmax 3
-    w_s3 = init_weights([num_hidden, num_labels], 'w_s3')
+    w_s3 = init_weights_fc([num_hidden, num_labels], 'w_s3')
     b_s3 = init_biases([num_labels], 'b_s3')
 
     # Softmax 4
-    w_s4 = init_weights([num_hidden, num_labels], 'w_s4')
+    w_s4 = init_weights_fc([num_hidden, num_labels], 'w_s4')
     b_s4 = init_biases([num_labels], 'b_s4')
 
     # Softmax 5
-    w_s5 = init_weights([num_hidden, num_labels], 'w_s5')
+    w_s5 = init_weights_fc([num_hidden, num_labels], 'w_s5')
     b_s5 = init_biases([num_labels], 'b_s5')
 
     def model(data, keep_prob, shape):
@@ -214,7 +216,7 @@ with graph.as_default():
 
     '''Training Computation'''
     [logits_1, logits_2, logits_3, logits_4, logits_5] = model(
-        tf_train_dataset, 0.5, shape)
+        tf_train_dataset, 0.9, shape)
 
     '''Loss Function'''
     with tf.name_scope("loss"):
@@ -237,9 +239,9 @@ with graph.as_default():
     global_step = tf.Variable(0)
     start_learning_rate = 0.05
     learning_rate = tf.train.exponential_decay(
-        start_learning_rate, global_step, 100000, 0.96, staircase=True)
+        start_learning_rate, global_step, 10000, 0.96)
 
-    optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(
+    optimizer = tf.train.AdagradOptimizer(learning_rate).minimize(
         loss, global_step=global_step)
 
     '''Predictions'''
@@ -324,13 +326,13 @@ with tf.Session(graph=graph) as session:
     print(
     ('Test accuracy: {}%'.format(accuracy(test_prediction.eval(), y_test[:,1:6]))))
 
-    save_path = saver.save(session, "model_trial_1.ckpt")
+    save_path = saver.save(session, "model_trial_2.ckpt")
     print('Model saved in file: {}'.format(save_path))
 
 
 print('Successfully completed computation and iterations!')
 
 print('To view Tensorboard\'s visualizations, please run \
-\'tensorboard --logdir=log_trial_1\' in your terminal')
+\'tensorboard --logdir=log_trial_2\' in your terminal')
 
 

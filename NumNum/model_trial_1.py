@@ -295,7 +295,7 @@ print('Running computation and iteration...')
 print('If you are unable to save the summary, please change the path to where you want it to write.')
 
 with tf.Session(graph=graph) as session:
-    writer = tf.train.SummaryWriter("/mnt/deep_learning/logs", session.graph)  # for 0.8
+    writer = tf.train.SummaryWriter("/log_trial_1", session.graph)  # for 0.8
     merged = tf.merge_all_summaries()
 
     '''If you want to restore model'''

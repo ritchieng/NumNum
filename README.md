@@ -13,10 +13,10 @@ I recommend starting a GPU instance using Amazon's AWS. I have created an image 
 
 ## How to use this code base
 1. Create the relevant folders with the commands 
-```
-mkdir log_trial_1
-mkdir log_trial_2
-```
+	- ```
+	mkdir log_trial_1
+	mkdir log_trial_2
+	```
 2. You can load the data and pre-process all the images with one single command ```python load_data.py```
 3. Load the first model using the command ```python model_trial_1.py```
     - The output should resemble something similar to this [output](https://github.com/ritchieng/NumNum/blob/master/NumNum/model_trial_1_command_results.txt).

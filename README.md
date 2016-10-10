@@ -8,6 +8,9 @@ I am attempting to predict a series of numbers given an image of house numbers f
 ## Programming Language
 I used Python and Tensorflow to build the model. This implementation also uses TensorBoard extensively for visualizations.
 
+## Problems running Tensorflow? Use TFAMI.
+I recommend starting a GPU instance using Amazon's AWS. I have created an image and replicated it across all regions. You can easily run this set of code on the GPU instance within a few minutes. Simply search for `TFAMI`. More information on the specific IDs can be obtained from the following [Github repository](https://github.com/ritchieng/tensorflow-aws-ami).
+
 ## How to use this code base
 1. Create the relevant folders with the commands 
 ```
@@ -26,8 +29,9 @@ mkdir log_trial_2
     - Then run the command ```kill -9 <PID>``` where the PID is the number you can find when you run the command above.
     - Simply run the command to launch Tensorboard again ```tensorboard --logdir=log_trial_2```
 
+
 ## Detailed Report
-To guide you through, I have made a detailed report. You can refer to the report [here](https://github.com/ritchieng/NumNum/blob/master/NumNum/report/report.pdf). It is actually in this repository.
+To guide you through, I have made a detailed report. You can refer to the report [here](https://github.com/ritchieng/NumNum/blob/master/NumNum/report/report.pdf). Also, it is actually in this repository.
 
 ## Academic Journals and Resources
 1. [Multi-digit recognition](https://arxiv.org/abs/1312.6082)

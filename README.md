@@ -9,7 +9,7 @@ I am attempting to predict a series of numbers given an image of house numbers f
 I used Python and Tensorflow to build the model. This implementation also uses TensorBoard extensively for visualizations.
 
 ## Problems running Tensorflow? Use TFAMI.
-I recommend starting a GPU instance using Amazon's AWS. I have created an image and replicated it across all regions. You can easily run this set of code on the GPU instance within a few minutes. Simply search for `TFAMI`. More information on the specific IDs can be obtained from the following [Github repository](https://github.com/ritchieng/tensorflow-aws-ami).
+I recommend starting a GPU instance using Amazon's AWS. I have created an image and replicated it across all regions. You can easily run this set of code on the GPU instance within a few minutes. Simply search for `TFAMI` under `community AMIs` when you are launching your instance. More information on the specific IDs can be obtained from the following [Github repository](https://github.com/ritchieng/tensorflow-aws-ami).
 
 ## How to use this code base
 1. Create the relevant folders with the commands 

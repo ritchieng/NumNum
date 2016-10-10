@@ -29,7 +29,7 @@ I recommend starting a GPU instance using Amazon's AWS. I have created an image 
 
 
 ## Detailed Report
-To guide you through, I have made a detailed report. You can refer to the report [here](https://github.com/ritchieng/NumNum/blob/master/NumNum/report/report.pdf). Also, it is actually in this repository.
+To guide you through, I have made a detailed report. You can refer to the report [here](https://github.com/ritchieng/NumNum/blob/master/NumNum/report/report.pdf). 
 
 ## Academic Journals and Resources
 1. [Multi-digit recognition](https://arxiv.org/abs/1312.6082)

@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{Training} \PYG{n}{data} \PYG{n}{shape}\PYG{p}{:} \PYG{p}{(}\PYG{l+m+mi}{230070}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
-\PYG{n}{Training} \PYG{n}{label} \PYG{n}{shape}\PYG{p}{:} \PYG{p}{(}\PYG{l+m+mi}{230070}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{)}
-\PYG{n}{Validation} \PYG{n}{data} \PYG{n}{shape}\PYG{p}{:} \PYG{p}{(}\PYG{l+m+mi}{5684}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
-\PYG{n}{Validation} \PYG{n}{label} \PYG{n}{shape}\PYG{p}{:} \PYG{p}{(}\PYG{l+m+mi}{5684}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{)}
-\PYG{n}{Test} \PYG{n}{data} \PYG{n}{shape}\PYG{p}{:} \PYG{p}{(}\PYG{l+m+mi}{13068}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
-\PYG{n}{Test} \PYG{n}{label} \PYG{n}{shape}\PYG{p}{:} \PYG{p}{(}\PYG{l+m+mi}{13068}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{)}
-\end{Verbatim}

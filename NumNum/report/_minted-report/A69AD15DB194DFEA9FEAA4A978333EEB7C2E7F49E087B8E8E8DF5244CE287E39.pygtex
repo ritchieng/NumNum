@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{k}{def} \PYG{n+nf}{init\PYGZus{}weights\PYGZus{}conv}\PYG{p}{(}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{name}\PYG{p}{):}
-        \PYG{k}{return} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{get\PYGZus{}variable}\PYG{p}{(}\PYG{n}{shape}\PYG{o}{=}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{n}{name}\PYG{p}{,}
-            \PYG{n}{initializer}\PYG{o}{=}\PYG{n}{tf}\PYG{o}{.}\PYG{n}{contrib}\PYG{o}{.}\PYG{n}{layers}\PYG{o}{.}\PYG{n}{xavier\PYGZus{}initializer\PYGZus{}conv2d}\PYG{p}{())}
-    \PYG{k}{def} \PYG{n+nf}{init\PYGZus{}weights\PYGZus{}fc}\PYG{p}{(}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{name}\PYG{p}{):}
-        \PYG{k}{return} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{get\PYGZus{}variable}\PYG{p}{(}\PYG{n}{shape}\PYG{o}{=}\PYG{n}{shape}\PYG{p}{,} \PYG{n}{name}\PYG{o}{=}\PYG{n}{name}\PYG{p}{,}
-            \PYG{n}{initializer}\PYG{o}{=}\PYG{n}{tf}\PYG{o}{.}\PYG{n}{contrib}\PYG{o}{.}\PYG{n}{layers}\PYG{o}{.}\PYG{n}{xavier\PYGZus{}initializer}\PYG{p}{())}
-\end{Verbatim}

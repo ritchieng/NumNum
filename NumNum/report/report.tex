@@ -31,6 +31,7 @@
 \usepackage{titlesec} % Allows customization of titles
 \renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
 \renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\renewcommand\thesubsubsection{\roman{subsubsection}} % roman numerals for subsections
 \titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
 \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
 
@@ -38,7 +39,7 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Multi-digit Prediction with Convolutional Neural Networks, Ritchie Ng, Version 1} % Custom header text
+\fancyhead[C]{Multi-digit Prediction with Convolutional Neural Networks, Ritchie Ng, Version 2} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 \usepackage{titling} % Customizing the title section
@@ -91,9 +92,9 @@ Convolutional Neural Networks (ConvNets) have been known to be effective in pred
 %------------------------------------------------
 
 \subsection{Overview}
-This project explores how convolutional neural networks (ConvNets) can be used to effectively identify a series of digits from real-world images that are obtained from \textit{The Street View House Numbers (SVHN) Dataset}.  ConvNets have evolved dramatically every year since the inception of the ImageNet Challenge in 2010. 
+This project explores how convolutional neural networks (ConvNets) can be used to effectively identify a series of digits from real-world images that are obtained from \textit{The Street View House Numbers (SVHN) Dataset}\footnote{http://ufldl.stanford.edu/housenumbers/} \cite{Netzer:2011aa}.  ConvNets have evolved dramatically every year since the inception of the ImageNet Challenge\footnote{http://image-net.org} in 2010. 
 
-A proverbial ConvNet structure is the \textit{LeNet-5} that has relatively few layers of convolutions, poolings, and full connections. Subsequently, with the advent of the ImageNet Challenge, we are experiencing a gradual trend towards deeper ConvNets with more layers and higher accuracy such as \textit{AlexNet}, \textit{ZFNet}, \textit{VGGNet}, \textit{GoogLeNet}, and \textit{ResNet} being the latest state-of-the-art implementation of ConvNets.  
+A proverbial ConvNet structure is the \textit{LeNet-5} that has relatively few layers of convolutions, poolings, and full connections. Subsequently, with the advent of the ImageNet Challenge, we are experiencing a gradual trend towards deeper ConvNets with more layers and higher accuracy such as \textit{AlexNet} \cite{NIPS2012_4824}, \textit{ZFNet} \cite{Zeiler:2013aa}, \textit{VGGNet \cite{Simonyan:2014aa}}, \textit{GoogLeNet} \cite{Szegedy:2014aa}, and \textit{ResNet} \cite{He:2015aa} being the latest state-of-the-art implementation of ConvNets.  
 
 To this point, I started off with a simple ConvNet structure as a base where I made refinements to determine my optimal model for identifying multiple digits from real-world images.
 
@@ -106,9 +107,9 @@ I am attempting to predict a series of numbers given an image of house numbers f
 
 \subsection{Metric}
 
-Across the models, I compared the training, validation and test accuracies. And accuracy is measured by Equation (1).
+Across the models, I compared the training, validation and test accuracies. And accuracy is measured by Equation \ref{accuracyequation}.
 
-\begin{equation} \label{}
+\begin{equation} \label{accuracyequation}
 \frac{TP + TN}{TP + TN + FP + FN}
 \end{equation}
 
@@ -121,6 +122,8 @@ def accuracy(predictions, labels):
             / predictions.shape[1] / predictions.shape[0])      
  \end{minted}
  
+ I compared test accuracies across the models to determine the best model. The higher the test accuracy, the better the model. And the model with the highest test accuracy is deemed as the best model. Validation and training accuracies are not considered for comparison because they are not as representative of the the model's predictive capability on unseen data. 
+ 
 %------------------------------------------------
 
 \section{Analysis}
@@ -128,19 +131,20 @@ def accuracy(predictions, labels):
 %------------------------------------------------
 \subsection{Data Exploration}
 
-There are 10 classes in the data, 1 for each digit and 10 denotes '0'. In total, there are 73257 digits for training, 26032 digits for testing, and 531131 extra digits. For my implementation, I used the raw images that came with a variety of dimensions as shown in Figure 1.
+There are 10 classes in the data, 1 for each digit and 10 denotes '0'. In total, there are 73257 digits for training, 26032 digits for testing, and 531131 extra digits. For my implementation, I used the raw images that came with a variety of dimensions as shown in Figure \ref{rawimages}.
 
 \begin{figure}[h]
 \caption{Examples of the the database of raw images from SVHN}
 \centering
 \includegraphics[width=0.5\textwidth]{original_photos}
+\label{rawimages}
 \end{figure}
 
 %------------------------------------------------
 %	EXPLORATORY VISUALIZATIONS
 \subsection{Exploratory Visualization}
 
-When I went into the raw data to further explore the images, the images had a few properties as shown in Table 1. 
+When I went into the raw data to further explore the images, the images had a few properties as shown in Table \ref{trainingimages}. 
 
 \begin{table}[htp]
 \caption{Examining Training Images}
@@ -158,46 +162,51 @@ Image Number & Description \\
 
 \end{tabular}
 \end{center}
-\label{default}
+\label{trainingimages}
 \end{table}
 
 \begin{figure}
 \caption{Blur image 141}
 \centering
 \includegraphics[width=0.5\textwidth]{141_blur}
+\label{image141}
 \end{figure}
 
 \begin{figure}
 \caption{Clear image 180}
 \centering
 \includegraphics[width=0.5\textwidth]{180_clear}
+\label{image180}
 \end{figure}
 
 \begin{figure}
 \caption{Image 337 with an alphabet}
 \centering
 \includegraphics[width=0.5\textwidth]{337_alphabets}
+\label{image337}
 \end{figure}
 
 \begin{figure}
 \caption{Image 645 with multiple alphabets}
 \centering
 \includegraphics[width=0.5\textwidth]{645_alphabets}
+\label{image645}
 \end{figure}
 
 \begin{figure}
 \caption{Image 650 with confusing line}
 \centering
 \includegraphics[width=0.5\textwidth]{650_confusing}
+\label{image650}
 \end{figure}
 
-Image 141 in Figure 2 may be an issue for the ConvNet to predict the correct numbers.  Likewise, images 337, 645 and 650 may have issues due to alphabets and confusing lines as shown in Figures 4, 5, and 6. On the other hand, image 180 from Figure 3 would be easy for the ConvNet to predict and fortunately the majority of images are similar to this. 
+Image 141 in Figure 2 may be an issue for the ConvNet to predict the correct numbers.  Likewise, images 337, 645 and 650 may have issues due to alphabets and confusing lines as shown in Figures \ref{image337}, \ref{image645}, and \ref{image650}. On the other hand, image 180 from Figure \ref{image180} would be easy for the ConvNet to predict and fortunately the majority of images are similar to this. 
 
 %------------------------------------------------
-%	ALGORITHMS AND TECHNIQUES
-\subsection{Algorithms and Techniques}
+%	PROGRAMMING LANGUAGE AND ENVIRONMENT
+\subsection{Programming Language and Environment}
 
-My programming language of choice is Python 2.7 and I will be using TensorFlow to build our deep ConvNets. Also, this project uses Tensorboard extensively for visualizations. It is a relatively new area for many people who are using Tensorflow and there are detailed instructions on how this has been implemented and how you can view the interactive visualizations in the implementations section.
+My programming language of choice is Python 2.7 and I will be using TensorFlow to build our deep ConvNets. Also, this project uses TensorBoard extensively for visualizations. It is a relatively new area for many people who are using Tensorflow and there are detailed instructions on how this has been implemented and how you can view the interactive visualizations in the implementations section.
 
 Other substantial packages that are needed to run the code are shown in the following code snippet. Most of them are used for loading the data and processing the data. With $numpy$ being the most used package for data manipulation.
 
@@ -220,14 +229,64 @@ from numpy import random
 
 The models' computations are accelerated with a CUDA-enabled GPU on Amazon Web Service (AWS) with a g2.2xlarge EC2 instance and a 60 GB EBS volume attached to it and each trial went through 60,000 steps to achieve the results reported. 
 
-% Text requiring further explanation\footnote{Example footnote}.
-% A statement requiring citation \cite{Figueredo:2009dg}.
+As the computations are expansive, I recommend using a GPU instance on AWS to run the code I have written. I understand that many struggle to set up the right environment to run Tensorflow, so I created an AMI that is available across all locations in the world when you are launching your GPU instance. Simply search for "TFAMI" under "community AMIs" and you can launch your instance and run the code without doing anything. This is an open-source AMI I made and it is available on Github\footnote{https://github.com/ritchieng/tensorflow-aws-ami} with more information.
 
+With all the languages, packages and environment clarified, I will now proceed to explain ConvNets and why they are used instead of plain-vanilla Multi-Layer Perceptrons (MLPs). 
+
+%----------------------------------------------------------------------------------------
+\subsection{Algorithms and Techniques}
+
+
+Assume we have a dataset of images all with a consistent dimension measuring 128 pixels x 128 pixels, we would require a total of 16,384 input weights plus an additional bias in the case of a traditional feedforward Multi-layer Perceptron (MLP). Importantly, the major flaw is that if we reshape the pixels into a vector, we lose the spatial structure of the images. This is an area that a ConvNet addresses and also the reason why I am using a ConvNet over a traditional MLP in this multi-digit recognition project.
+
+ConvNets preserve the spatial relationship amongst pixels, learning internal feature representations where they are used across the whole image. Hence a digit, for instance, can be blurred, shifted to the left or right, or even distorted and the ConvNet can still detect the digit. Currently, ConvNets are used for object recognition in images and videos with state-of-the-art results. The benefits of a ConvNet are summarized in Table \ref{cnnpros}. Subsequently, I will explain the components of a ConvNet and how it works.
+
+\begin{table}[htp]
+\caption{ConvNet Benefits}
+\begin{center}
+\begin{tabular}{llr}
+
+\cmidrule(r){1-2}
+Number & Benefit \\
+\midrule
+1 & Fewer weights\\
+2 & Able to tackle object distortions, changing object positions and orientations\\ 
+3 & Learn feature representations amongst input pixels \\
+
+\end{tabular}
+\end{center}
+\label{cnnpros}
+\end{table}
+
+
+The typical ConvNet's topology is made up of 3 layers as shown in Figure \ref{convnet}: the convolutional layers, the pooling layers and the fully-connected layers. Now, I will explain the detailed components of a typical ConvNet and how the layers are related to one another.
+
+\begin{figure}
+\caption{Typical ConvNet Topology}
+\centering
+\includegraphics[width=0.5\textwidth]{convnet}
+\label{convnet}
+\end{figure}
+
+\subsubsection{Filters}
+As you can see from Figure \ref{convnet}, filters are the little boxes that map one feature maps to the next layer's feature maps. Think of it as a little camera that goes through the whole image comprising the alphabet "A". You would then choose a filter with a dimension, the box, of say 5 x 5 pixels and move it across the whole image. How you move the box is called the stride, where if you have a stride of 1, you would move the box 1 pixel at a time in this case. If you have a large stride, you would move more for each step. Once you slide the filter across the whole image once, this would map to a feature map in the following layer. This brings me to my explanation of feature maps. 
+
+\subsubsection{Feature Maps}
+A feature map is simply the output of one filter that is applied to the previous layer. If you have 10 filters applied to the previous layer, you would have 10 feature maps. So if you have n number of filters, you would have n number of feature maps in the next layer. An important thing to note, is that the process of mapping the inputs to the feature maps in the next layer is called a convolution. Logically, when we map the inputs to the feature maps, we have our convolution layer. But what does the following step called "pooling" does in Figure \ref{convnet}? This is a simpler concept that I am going to tackle now. 
+
+\subsubsection{Pooling Layers} 
+Pooling layers are layers where we have reduced the dimensionality of the previous layer. For example, we have a convolution layer with a dimension of 32 x 32 x 10 (image size x image size x number of feature maps). We can apply max pooling or average pooling to the convolution layer to reduce the dimensions to 16 x 16 x 10. We are doing this to reduce the image size for computational efficiency, reduce overfitting or simply to generalize feature representations. Take note that max pooling or average pooling is similar to a filter where we need to specify the dimensions and this would determine the subsequent dimension of the pooling layer. Also, "pooling" has some variants and it is often called "sub-sampling" because we are down-sampling the image to a lower dimensionality. Finally we continue to add a mix of convolutions and pooling until we reach the fully-connected layer. 
+
+\subsubsection{Fully Connected Layers} 
+This is a typical layer in your MLP where we are trying to create non-linear combinations of images to make predictions. Although it is important to note recent structures like \textit{ResNet} \cite{He:2015aa} do not use fully-connected layers at all and simply use a readout layer like softmax to make predictions. 
+
+\subsubsection{Readout Layer} \
+This is often called the softmax layer where we are making the final predictions based on the previous pooling, convolution or fully-connected layer. It is the final layer. 
 %----------------------------------------------------------------------------------------
 
 \subsection{Benchmark}
 
-I compared test accuracies across the models to determine the best model. The higher the test accuracy, the better the model. And the model with the highest test accuracy is deemed as the best model. Validation and training accuracies are not considered for comparison because they are not as representative of the the model's predictive capability on unseen data. 
+My metric of choice is accuracy, as such my benchmark for this problem would be an out-of-sample, test, accuracy of  96\%. This was the accuracy \cite{Goodfellow:2013aa} claimed to have obtained with their model.
 
 %----------------------------------------------------------------------------------------
 
@@ -240,7 +299,7 @@ I compared test accuracies across the models to determine the best model. The hi
 
 It is important to note that the images came in many dimensions. As such, I located the bounding boxes and cropped the images using the bounding boxes' location such that all images are of the size 32 x 32 pixels. Moreover, I also normalized the images and converted them from 3 channels, color images, to 1 channel, greyscale images. 
 
-It is important to note that there were originally 73257 digits for training, 26032 digits for testing, and 531131 extra digits. I distributed the extra digits and testing digits randomly to increase our training dataset so I have more data to train on. Moreover, I deleted an image that had more than 5 digits as it is an anomaly in the training set. The final shapes of the datasets' tensors and labels' arrays are shown in the following code snippet.
+It is important to note that there were originally 73257 digits for training, 26032 digits for testing, and 531131 extra digits. I distributed the extra digits and testing digits randomly to increase our training dataset so I have more data to train on. Moreover, I deleted an image that had more than 5 digits as it is an anomaly in the training set. The final shapes of the datasets' tensors and labels' arrays are shown in the following code.
 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \begin{minted}[bgcolor=bg]{python}
@@ -252,7 +311,7 @@ Test data shape: (13068, 32, 32, 1)
 Test label shape: (13068, 6)
  \end{minted}
  
- All the processed images are then pickled into a file named SVHN.pickle where anyone can easily access through the following code. 
+All the processed images are then pickled into a file, "SVHN.pickle", where anyone can easily access the tensors through the following code. 
  
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \begin{minted}[bgcolor=bg]{python}
@@ -284,7 +343,7 @@ print('Data successfully loaded!')
 %	TRIAL 1
 \subsection{Implementation of Trial 1}
 
-In this first trial, I started off with a simple model comprising the following layers. 
+In this first trial, I started off with a simple model comprising the following layers shown in Table \ref{trial1topology}. The idea of using five parallel softmax layers is inspired by the recommendation on tackling multiple digits by \cite{Netzer:2011aa}. It is important to take note that \cite{Netzer:2011aa} used 6 parallel softmax layers instead of 5 as they included the length of the digits. 
 
 \begin{table}[htp]
 \caption{ConvNet Topology: Trial 1}
@@ -309,24 +368,26 @@ Softmax Layer & 5 softmax (readout) activation layers for 5 digits\\
 
 \end{tabular}
 \end{center}
-\label{default}
+\label{trial1topology}
 \end{table}
 
-As you can see from Figure 7, we have 3 convolution layers with 3 sets of weights and biases. And the final convolution layer feeds to the fully connected layer as seen in Figure 8.
+As you can see from Figure \ref{trial1convlayers}, we have 3 convolution layers with 3 sets of weights and biases. And the final convolution layer feeds to the fully connected layer as shown in Figure \ref{trial1fc}.
 
 \begin{figure}
 \caption{Trial 1 Convolution Layers}
 \centering
 \includegraphics[width=0.5\textwidth]{conv_trial_1}
+\label{trial1convlayers}
 \end{figure}
 
 \begin{figure}
 \caption{Trial 1 FC Layer}
 \centering
 \includegraphics[width=0.5\textwidth]{fc_trial_1}
+\label{trial1fc}
 \end{figure}
 
-Moreover, the weights are initialized with special functions I created so it is easier to expand the convolutional networks and have access to Tensorboard's visualizations. The weights are initialized with a random normal distribution with a standard deviation of 0.01. And the functions take in two arguments: the tensor and the names for Tensorboard's visualizations.
+Moreover, the weights are initialized with special functions I created so it is easier to expand the convolutional networks and have access to TensorBoard's visualizations. The weights are initialized with a random normal distribution with a standard deviation of 0.01. And the functions take in two arguments: the tensor and the names for TensorBoard's visualizations.
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \begin{minted}[bgcolor=bg]{python}
     def init_weights(shape, name):
@@ -341,15 +402,17 @@ Moreover, the weights are initialized with special functions I created so it is 
         )
 \end{minted}
  
-For my optimizer, I used Stochastic Gradient Descent (SGD) with a step-wise decay with a starting learning rate of 0.05. In the equation, I used step-wise decay, so $\frac {globalstep}{decaysteps}$ would return an integer. And in Figure 9, we can see the SGD's graph with the relevant weights and biases.
-\begin{equation} \label{}
+For my optimizer, I used Stochastic Gradient Descent (SGD) with a step-wise decay with a starting learning rate of 0.05. In the equation as shown in Equation \ref{stepwise}, I used step-wise decay, so $\frac {globalstep}{decaysteps}$ would return an integer. And in Figure {sgdtbtrial1}, we can see the SGD's graph with the relevant weights and biases.
+
+\begin{equation} \label{stepwise}
 decayed learning rate = learningrate * decayrate^\frac{globalstep}{decaysteps}
 \end{equation}
 
 \begin{figure}
-\caption{SGD Tensorboard graph}
+\caption{SGD TensorBoard graph}
 \centering
 \includegraphics[width=0.5\textwidth]{gd_trial_1}
+\label{sgdtbtrial1}
 \end{figure}
 
 Importantly, unlike running a ConvNet on the MNIST dataset or majority of the datasets, our loss function is a combination of the parallel softmax (readout) activation layers. The code of the loss function can be seen in the following code and the graphical representation can be seen in Figure 10.
@@ -371,12 +434,12 @@ Importantly, unlike running a ConvNet on the MNIST dataset or majority of the da
  \end{minted}
  
 \begin{figure}
-\caption{Loss Tensorboard graph}
+\caption{Loss TensorBoard graph}
 \centering
 \includegraphics[width=0.5\textwidth]{loss_trial_2}
 \end{figure}
 
-With this model, I managed to achieve a test accuracy of 87.64\% and the training and validation accuracies are shown below. And it is interesting to note how the loss seems to plateau and they are very erratic as seen in Figure 11. 
+With this model, I managed to achieve a test accuracy of 87.64\% and the training and validation accuracies are shown below. And it is interesting to note how the loss seems to plateau and they are very erratic as seen in Figure \ref{trial1loss}. 
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \begin{minted}[bgcolor=bg]{python}
 Minibatch accuracy: 90.0%
@@ -385,9 +448,10 @@ Test accuracy: 87.6400367309%
  \end{minted}
 
 \begin{figure}
-\caption{Loss Tensorboard graph}
+\caption{Loss TensorBTensorBoardoard graph}
 \centering
 \includegraphics[width=0.5\textwidth]{loss_trial_1}
+\label{trial1loss}
 \end{figure}
 
 I believe this warrants a second trial to refine some hyperparameters like my optimizer, initialization of weights, and the dropout probability. 
@@ -399,7 +463,7 @@ I believe this warrants a second trial to refine some hyperparameters like my op
  
 In this section, I implemented our ConvNet with different hyperparameters from my first trial.
  
-First, I changed my dropout probability to 0.8 and all else are similar as shown in Table 3. 
+First, I changed my dropout probability to 0.8 and all else are similar as shown in Table \ref{trial2topo}. 
 
 \begin{table}[htp]
 \caption{ConvNet Topology: Trial 2}
@@ -418,13 +482,13 @@ ReLU & Rectified Linear Unit Activation\\
 Max Pooling & Receptive Field: 2 x 2 | Stride: 2 | Padding: Valid\\
 Convolution 3 & Filters: 96 | Receptive Field: 5 x 5 | Stride: 2 | Padding: Valid\\
 ReLU & Rectified Linear Unit Activation\\
-Dropout & Keep probability of 0.5\\
+Dropout & Keep probability of 0.8\\
 Fully Connected Layer (FC) & Nodes: 64\\
 Softmax Layer & 5 softmax (readout) activation layers for 5 digits \\
 
 \end{tabular}
 \end{center}
-\label{default}
+\label{trial2topo}
 \end{table}
 
 Second, I changed my optimizer from SGD to AdaGrad. This is because our data is quick sparse for digits with many numbers and AdaGrad is well-suited for such a dataset because it adapts the learning rate to the parameters performing larger updates for infrequent parameters and smaller updates for frequent parameters.
@@ -441,27 +505,28 @@ Third, I changed the initialization of the weights using Xavier Initialization. 
             initializer=tf.contrib.layers.xavier_initializer())
  \end{minted}
  
- With this, I managed to get a test accuracy of 91.62\% with the following test and validation accuracies.
- \definecolor{bg}{rgb}{0.95,0.95,0.95}
+With this, I managed to get a test accuracy of 91.62\% with the following test and validation accuracies.
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
 \begin{minted}[bgcolor=bg]{python}
 Minibatch accuracy: 96.25%
 Validation accuracy: 90.5594651654%
 Test accuracy: 91.6176920722%
- \end{minted}
+\end{minted}
  
- Interestingly, unlikely previously the loss function is not plateauing and there seem to be more room for learning as shown on Figure 12.
+Interestingly, unlike previously, the loss function is not plateauing and there seem to be more room for learning as shown on Figure \ref{trial2loss}.
  
 \begin{figure}
-\caption{Loss Tensorboard graph for Trial 2}
+\caption{Loss TensorBoard graph for Trial 2}
 \centering
 \includegraphics[width=0.5\textwidth]{trial_2_loss}
+\label{trial2loss}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
 %	FINAL RESULTS
 \section{Results}
  
- Comparing the two trials, we can see how the second model has a higher test accuracy and has yet to fully converged even with a higher accuracy. Moreover, the second model have higher validation and training accuracies too from Table 4 although we are not using them as a benchmark to decide the best model. Hence, since the second model has the best accuracy, I have decided to settle with this simple ConvNet that produced a respectable 91.62\% on unseen data.
+ Comparing the two trials, we can see how the second model has a higher test accuracy and has yet to fully converged even with a higher accuracy. Moreover, the second model have higher validation and training accuracies too from Table \ref{performancecomparison} although we are not using them as a benchmark to decide the best model. Hence, since the second model has the best accuracy, I have decided to settle with this simple ConvNet that produced a respectable 91.62\% on unseen data.
  
  \begin{table}[htp]
 \caption{Comparison of the performance of my models}
@@ -477,23 +542,76 @@ Validation Accuracy &  87.22\% & 90.56\% \\
 
 \end{tabular}
 \end{center}
-\label{default}
+\label{performancecomparison}
 \end{table}
  
 \subsection{Model Evaluation and Justification}
 The huge performance gain from the second trial came from a more suitable optimizer, AdaGrad, compared to SGD due to the nature of our sparse data where we have few images with many digits like 4 or 5. Also, the initialization of the weights using Xavier's initializations contributed to this performance gain too. 
+
+However, comparing with my benchmark that is set against \cite{Goodfellow:2013aa}, our test accuracy of 91.62\% failed to meet the benchmark of 96\%. Yet, it is important to note how this has room for improvements by simply running with more iterations as the model has not fully converged as shown in \ref{trial2loss}. Also, the accuracy is sufficiently high compared to the test accuracy of 90\% obtained from \cite{Goodfellow:2013aa} for another similar dataset using the same implementation.
 
 
 %----------------------------------------------------------------------------------------
 %	CONCLUSION
 
 \section{Conclusion}
+\subsection{Visualizations of Predictions}
 
+In this section, I will show some predictions that worked well and some that did not. From Figure \ref{image54}, we can see how it has inaccurately predicted 23 and this is not expected since the image is relatively clear with no alphabets or any other obstructions. But it may be how 3 looks similar to 8. However, for an expectedly tough prediction like Figure \ref{image189} with many alphabets and a messy background, the model accurately predicts "569". Also, previously I mentioned how lines may be an issue, however the model managed to accurately predict "260" with many lines in the background as shown in Figure \ref{image24}.
+
+\begin{figure}
+\caption{Inaccurate prediction of 28}
+\centering
+\includegraphics[width=0.5\textwidth]{pred_54}
+\label{image54}
+\end{figure}
+
+\begin{figure}
+\caption{Accurate prediction of 569}
+\centering
+\includegraphics[width=0.5\textwidth]{pred_182}
+\label{image189}
+\end{figure}
+
+\begin{figure}
+\caption{Accurate prediction of 260}
+\centering
+\includegraphics[width=0.5\textwidth]{pred_24}
+\label{image24}
+\end{figure}
+
+\subsection{Summary of Tackling the Problem}
+I will be highlighting which parts are challenging or interesting, and if so, why and how one can go about to tackle that particular part.
+
+\subsubsection{Loading the Data}
+This is easy and it did not pose much of a challenge.
+
+\subsubsection{Exploring the data}
+This is challenging as I used a lot of Python scripts to explore the data but it is still manageable. 
+
+\subsubsection{Processing the data}
+This is by far the most challenging task before we actually build our ConvNet. You must be familiar with bounding boxes to know how to process the images. I believe there may be easier ways to process the data by creating a standardized package for future image processing based on certain hyperparameters. 
+
+\subsubsection{Building the model}
+This is the most challenging part of the model-building process. I struggled in this area as most of the predictions I have done do not use this unique structure where I have multiple parallel softmax layers. But guidance from the paper in \cite{Goodfellow:2013aa} helped. 
+
+\subsubsection{Visualization of the model and its performance using TensorBoard}
+This is an underused feature. The majority of code examples online for any dataset do not use TensorBoard. But I decided to put in the effort to implement the solution with TensorBoard so others can explore too. 
+
+In sum, the most challenging parts of the project were processing the images and building a ConvNet with parallel softmax layers and using TensorBoard helped to visualize where I went wrong and if the graph I built matched what I had in mind. I highly recommend more people to use TensorBoard. 
+
+\subsection{Area for Improvements}
 The accuracy of the second model can be further improved with more training as it has yet to converge. Also, more investigation can be done to look at the large variation in our loss function. I did not use any renowned topology highlighted in the introduction such as $VGGNet$ or $ResNet$ to keep this project focused on how to classify multiple digits. This particular classification of multiple objects in a single image is lacking in examples online hence it provides a base for people to explore how we can use proven topologies such as $ResNet$ on this problem while maintaining the parallel readout layers to classify multiple digits. More importantly, there is room for improvement by using existing weights trained on the ImageNet dataset using $ResNet$ or other winning topologies and change the readout layer to the parallel readout layers. This may give a substantial boost to our test accuracy and reduce our training time. This method is recently coined as transfer learning and can be explored using this project's base code\footnote{You can access the open-source source code at https://github.com/ritchieng/NumNum.}.
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
+% \begin{thebibliography}{99} 
+
+\bibliographystyle{plain}
+\bibliography{report.bib}
+
+% \end{thebibliography}
 %----------------------------------------------------------------------------------------
 
 \end{document}

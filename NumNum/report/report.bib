@@ -1,12 +1,100 @@
 %% This BibTeX bibliography file was created using BibDesk.
 %% http://bibdesk.sourceforge.net/
 
-%% Created for Ritchie Ng at 2016-10-09 17:38:03 -0400 
+%% Created for Ritchie Ng at 2016-10-11 01:16:27 -0400 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@article{Goodfellow:2013aa,
+	Abstract = {Recognizing arbitrary multi-character text in unconstrained natural photographs is a hard problem. In this paper, we address an equally hard sub-problem in this domain viz. recognizing arbitrary multi-digit numbers from Street View imagery. Traditional approaches to solve this problem typically separate out the localization, segmentation, and recognition steps. In this paper we propose a unified approach that integrates these three steps via the use of a deep convolutional neural network that operates directly on the image pixels. We employ the DistBelief implementation of deep neural networks in order to train large, distributed neural networks on high quality images. We find that the performance of this approach increases with the depth of the convolutional network, with the best performance occurring in the deepest architecture we trained, with eleven hidden layers. We evaluate this approach on the publicly available SVHN dataset and achieve over $96\%$ accuracy in recognizing complete street numbers. We show that on a per-digit recognition task, we improve upon the state-of-the-art, achieving $97.84\%$ accuracy. We also evaluate this approach on an even more challenging dataset generated from Street View imagery containing several tens of millions of street number annotations and achieve over $90\%$ accuracy. To further explore the applicability of the proposed system to broader text recognition tasks, we apply it to synthetic distorted text from reCAPTCHA. reCAPTCHA is one of the most secure reverse turing tests that uses distorted text to distinguish humans from bots. We report a $99.8\%$ accuracy on the hardest category of reCAPTCHA. Our evaluations on both tasks indicate that at specific operating thresholds, the performance of the proposed system is comparable to, and in some cases exceeds, that of human operators.},
+	Author = {Ian J. Goodfellow and Yaroslav Bulatov and Julian Ibarz and Sacha Arnoud and Vinay Shet},
+	Date-Added = {2016-10-11 04:21:39 +0000},
+	Date-Modified = {2016-10-11 04:21:39 +0000},
+	Eprint = {1312.6082},
+	Month = {12},
+	Title = {Multi-digit Number Recognition from Street View Imagery using Deep Convolutional Neural Networks},
+	Url = {https://arxiv.org/abs/1312.6082},
+	Year = {2013},
+	Bdsk-Url-1 = {https://arxiv.org/abs/1312.6082}}
+
+@article{https://arxiv.org/abs/1312.6082,
+	Date-Added = {2016-10-11 04:21:34 +0000},
+	Date-Modified = {2016-10-11 04:21:36 +0000}}
+
+@article{lecun1995convolutional,
+	Author = {LeCun, Yann and Bengio, Yoshua},
+	Date-Added = {2016-10-10 22:14:48 +0000},
+	Date-Modified = {2016-10-10 22:14:48 +0000},
+	Journal = {The handbook of brain theory and neural networks},
+	Number = {10},
+	Pages = {1995},
+	Title = {Convolutional networks for images, speech, and time series},
+	Volume = {3361},
+	Year = {1995}}
+
+@article{He:2015aa,
+	Abstract = {Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers---8x deeper than VGG nets but still having lower complexity. An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers.},
+	Author = {Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun},
+	Date-Added = {2016-10-10 21:47:04 +0000},
+	Date-Modified = {2016-10-10 21:47:04 +0000},
+	Eprint = {1512.03385},
+	Month = {12},
+	Title = {Deep Residual Learning for Image Recognition},
+	Url = {https://arxiv.org/abs/1512.03385},
+	Year = {2015},
+	Bdsk-Url-1 = {https://arxiv.org/abs/1512.03385}}
+
+@article{Szegedy:2014aa,
+	Abstract = {We propose a deep convolutional neural network architecture codenamed "Inception", which was responsible for setting the new state of the art for classification and detection in the ImageNet Large-Scale Visual Recognition Challenge 2014 (ILSVRC 2014). The main hallmark of this architecture is the improved utilization of the computing resources inside the network. This was achieved by a carefully crafted design that allows for increasing the depth and width of the network while keeping the computational budget constant. To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing. One particular incarnation used in our submission for ILSVRC 2014 is called GoogLeNet, a 22 layers deep network, the quality of which is assessed in the context of classification and detection.},
+	Author = {Christian Szegedy and Wei Liu and Yangqing Jia and Pierre Sermanet and Scott Reed and Dragomir Anguelov and Dumitru Erhan and Vincent Vanhoucke and Andrew Rabinovich},
+	Date-Added = {2016-10-10 21:46:13 +0000},
+	Date-Modified = {2016-10-10 21:46:13 +0000},
+	Eprint = {1409.4842},
+	Month = {09},
+	Title = {Going Deeper with Convolutions},
+	Url = {https://arxiv.org/abs/1409.4842},
+	Year = {2014},
+	Bdsk-Url-1 = {https://arxiv.org/abs/1409.4842}}
+
+@article{Simonyan:2014aa,
+	Abstract = {In this work we investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting. Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3x3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16-19 weight layers. These findings were the basis of our ImageNet Challenge 2014 submission, where our team secured the first and the second places in the localisation and classification tracks respectively. We also show that our representations generalise well to other datasets, where they achieve state-of-the-art results. We have made our two best-performing ConvNet models publicly available to facilitate further research on the use of deep visual representations in computer vision.},
+	Author = {Karen Simonyan and Andrew Zisserman},
+	Date-Added = {2016-10-10 21:44:58 +0000},
+	Date-Modified = {2016-10-10 21:44:58 +0000},
+	Eprint = {1409.1556},
+	Month = {09},
+	Title = {Very Deep Convolutional Networks for Large-Scale Image Recognition},
+	Url = {https://arxiv.org/abs/1409.1556},
+	Year = {2014},
+	Bdsk-Url-1 = {https://arxiv.org/abs/1409.1556}}
+
+@article{Zeiler:2013aa,
+	Abstract = {Large Convolutional Network models have recently demonstrated impressive classification performance on the ImageNet benchmark. However there is no clear understanding of why they perform so well, or how they might be improved. In this paper we address both issues. We introduce a novel visualization technique that gives insight into the function of intermediate feature layers and the operation of the classifier. We also perform an ablation study to discover the performance contribution from different model layers. This enables us to find model architectures that outperform Krizhevsky \etal on the ImageNet classification benchmark. We show our ImageNet model generalizes well to other datasets: when the softmax classifier is retrained, it convincingly beats the current state-of-the-art results on Caltech-101 and Caltech-256 datasets.},
+	Author = {Matthew D Zeiler and Rob Fergus},
+	Date-Added = {2016-10-10 21:43:55 +0000},
+	Date-Modified = {2016-10-10 21:43:55 +0000},
+	Eprint = {1311.2901},
+	Month = {11},
+	Title = {Visualizing and Understanding Convolutional Networks},
+	Url = {https://arxiv.org/abs/1311.2901},
+	Year = {2013},
+	Bdsk-Url-1 = {https://arxiv.org/abs/1311.2901}}
+
+@incollection{NIPS2012_4824,
+	Author = {Alex Krizhevsky and Sutskever, Ilya and Geoffrey E. Hinton},
+	Booktitle = {Advances in Neural Information Processing Systems 25},
+	Date-Added = {2016-10-10 21:38:50 +0000},
+	Date-Modified = {2016-10-10 21:38:50 +0000},
+	Editor = {F. Pereira and C. J. C. Burges and L. Bottou and K. Q. Weinberger},
+	Pages = {1097--1105},
+	Publisher = {Curran Associates, Inc.},
+	Title = {ImageNet Classification with Deep Convolutional Neural Networks},
+	Url = {http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf},
+	Year = {2012},
+	Bdsk-Url-1 = {http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}}
 
 @inproceedings{Netzer:2011aa,
 	Author = {Yuval Netzer and Tao Wang and Adam Coates and Alessandro Bissacco and Bo Wu and Andrew Y. Ng},
